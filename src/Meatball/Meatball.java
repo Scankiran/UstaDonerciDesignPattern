@@ -1,6 +1,6 @@
 package Meatball;
 
-public abstract class Kofte {
+public abstract class Meatball {
     String description="";
 
     public abstract double cost();

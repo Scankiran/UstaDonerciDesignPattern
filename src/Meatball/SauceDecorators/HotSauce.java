@@ -1,22 +1,22 @@
 package Meatball.SauceDecorators;
 
-import Meatball.Kofte;
+import Meatball.Meatball;
 import Meatball.SauceDecorator;
 
 public class HotSauce extends SauceDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public HotSauce(Kofte kofte){
-        this.kofte = kofte;
+    public HotSauce(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 0.95 + kofte.cost();
+        return 0.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Hot Sauce";
+        return meatball.getDescription() + ", Hot Sauce";
     }
 }

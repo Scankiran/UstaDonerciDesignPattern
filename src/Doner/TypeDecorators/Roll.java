@@ -1,22 +1,23 @@
 package Doner.TypeDecorators;
 
+import Doner.Doner;
 import Doner.TypeDecorator;
 import KidMenu.KidMenu;
 
 public class Roll extends TypeDecorator {
-    KidMenu kidMenu;
+    Doner doner;
 
-    public Roll(KidMenu kidMenu) {
-        this.kidMenu = kidMenu;
+    public Roll(Doner doner) {
+        this.doner = doner;
     }
 
     @Override
     public double cost() {
-        return kidMenu.cost() * 1.5;
+        return doner.cost() * 1.5;
     }
 
     @Override
     public String getDescription() {
-        return kidMenu.getDescription() + ", Roll Type ";
+        return doner.getDescription() + ", Roll Type ";
     }
 }

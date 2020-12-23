@@ -1,6 +1,6 @@
 package Meatball;
 
-public class WithFive extends Kofte{
+public class WithFive extends Meatball {
     public WithFive(){
         description = "Sandwich Kofte";
     }

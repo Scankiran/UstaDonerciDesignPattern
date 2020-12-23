@@ -1,6 +1,6 @@
 package Meatball;
 
-public class KilogramsSize extends Kofte{
+public class KilogramsSize extends Meatball {
     public KilogramsSize(){
         description = "Kilograms Size Kofte";
     }

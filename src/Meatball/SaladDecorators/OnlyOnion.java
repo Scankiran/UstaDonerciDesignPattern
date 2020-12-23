@@ -1,22 +1,22 @@
 package Meatball.SaladDecorators;
 
-import Meatball.Kofte;
+import Meatball.Meatball;
 import Meatball.SaladDecorator;
 
 public class OnlyOnion extends SaladDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public OnlyOnion(Kofte kofte){
-        this.kofte = kofte;
+    public OnlyOnion(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 2.95 + kofte.cost();
+        return 2.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Only Union Salad";
+        return meatball.getDescription() + ", Only Union Salad";
     }
 }

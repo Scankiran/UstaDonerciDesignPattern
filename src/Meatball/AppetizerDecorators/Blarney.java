@@ -1,22 +1,22 @@
 package Meatball.AppetizerDecorators;
 
 import Meatball.AppeziterDecorator;
-import Meatball.Kofte;
+import Meatball.Meatball;
 
 public class Blarney extends AppeziterDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public Blarney(Kofte kofte){
-        this.kofte = kofte;
+    public Blarney(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 1.95 + kofte.cost();
+        return 1.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Blarney";
+        return meatball.getDescription() + ", Blarney";
     }
 }

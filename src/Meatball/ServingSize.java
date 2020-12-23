@@ -1,6 +1,6 @@
 package Meatball;
 
-public class ServingSize extends Kofte{
+public class ServingSize extends Meatball {
     public ServingSize(){
         description = "Sandwich Kofte";
     }

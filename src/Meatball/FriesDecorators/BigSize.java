@@ -1,22 +1,22 @@
 package Meatball.FriesDecorators;
 
 import Meatball.FriesDecorator;
-import Meatball.Kofte;
+import Meatball.Meatball;
 
 public class BigSize extends FriesDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public BigSize(Kofte kofte){
-        this.kofte = kofte;
+    public BigSize(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 6.95 + kofte.cost();
+        return 6.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Big Size Fries";
+        return meatball.getDescription() + ", Big Size Fries";
     }
 }

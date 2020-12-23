@@ -1,22 +1,22 @@
 package Meatball.AppetizerDecorators;
 
 import Meatball.AppeziterDecorator;
-import Meatball.Kofte;
+import Meatball.Meatball;
 
 public class Pickle extends AppeziterDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public Pickle(Kofte kofte){
-        this.kofte = kofte;
+    public Pickle(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 0.95 + kofte.cost();
+        return 0.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Pickle";
+        return meatball.getDescription() + ", Pickle";
     }
 }

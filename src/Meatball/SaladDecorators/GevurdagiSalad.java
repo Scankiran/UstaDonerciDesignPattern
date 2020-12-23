@@ -1,23 +1,23 @@
 package Meatball.SaladDecorators;
 
-import Meatball.Kofte;
+import Meatball.Meatball;
 import Meatball.SaladDecorator;
 
 public class GevurdagiSalad extends SaladDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public GevurdagiSalad(Kofte kofte){
-        this.kofte = kofte;
+    public GevurdagiSalad(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 9.95 + kofte.cost();
+        return 9.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Gevurdagi Salad";
+        return meatball.getDescription() + ", Gevurdagi Salad";
     }
 
 }

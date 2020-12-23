@@ -1,22 +1,22 @@
 package Meatball.FriesDecorators;
 
 import Meatball.FriesDecorator;
-import Meatball.Kofte;
+import Meatball.Meatball;
 
 public class SmallSize extends FriesDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public SmallSize(Kofte kofte){
-        this.kofte = kofte;
+    public SmallSize(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 4.95 + kofte.cost();
+        return 4.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Small Size Fries";
+        return meatball.getDescription() + ", Small Size Fries";
     }
 }

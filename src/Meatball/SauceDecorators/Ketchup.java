@@ -1,22 +1,22 @@
 package Meatball.SauceDecorators;
 
-import Meatball.Kofte;
+import Meatball.Meatball;
 import Meatball.SauceDecorator;
 
 public class Ketchup extends SauceDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public Ketchup(Kofte kofte){
-        this.kofte = kofte;
+    public Ketchup(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 0.50 + kofte.cost();
+        return 0.50 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Ketchup";
+        return meatball.getDescription() + ", Ketchup";
     }
 }

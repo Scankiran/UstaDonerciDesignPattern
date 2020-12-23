@@ -1,23 +1,24 @@
 package Doner.TypeDecorators;
 
+import Doner.Doner;
 import Doner.TypeDecorator;
 import KidMenu.KidMenu;
 
 public class Kilogram extends TypeDecorator {
-    KidMenu kidMenu;
+    Doner doner;
 
-    public Kilogram(KidMenu kidMenu) {
-        this.kidMenu = kidMenu;
+    public Kilogram(Doner doner) {
+        this.doner = doner;
     }
 
     @Override
     public double cost() {
-        return kidMenu.cost() * 8.0;
+        return doner.cost() * 8.0;
     }
 
     @Override
     public String getDescription() {
-        return kidMenu.getDescription() + ", Kilogram Type ";
+        return doner.getDescription() + ", Kilogram Type ";
     }
 
 }

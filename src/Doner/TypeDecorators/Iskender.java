@@ -1,24 +1,23 @@
 package Doner.TypeDecorators;
 
-import Doner.Chicken;
+import Doner.Doner;
 import Doner.TypeDecorator;
-import KidMenu.KidMenu;
 
 public class Iskender extends TypeDecorator {
-    KidMenu kidMenu;
+    Doner doner;
 
-    public Iskender(KidMenu kidMenu) {
-        this.kidMenu = kidMenu;
+    public Iskender(Doner doner) {
+        this.doner = doner;
     }
 
     @Override
     public double cost() {
-            return kidMenu.cost() * 3.5;
+            return doner.cost() * 3.5;
     }
 
     @Override
     public String getDescription() {
-        return kidMenu.getDescription() + ", Iskender Type ";
+        return doner.getDescription() + ", Iskender Type ";
     }
 
 }

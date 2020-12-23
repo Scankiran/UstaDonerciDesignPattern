@@ -1,22 +1,22 @@
 package Meatball.AppetizerDecorators;
 
 import Meatball.AppeziterDecorator;
-import Meatball.Kofte;
+import Meatball.Meatball;
 
 public class Grind extends AppeziterDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public Grind(Kofte kofte){
-        this.kofte = kofte;
+    public Grind(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 1.95 + kofte.cost();
+        return 1.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", Grind";
+        return meatball.getDescription() + ", Grind";
     }
 }

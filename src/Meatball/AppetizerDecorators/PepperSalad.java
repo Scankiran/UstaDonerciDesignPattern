@@ -1,22 +1,22 @@
 package Meatball.AppetizerDecorators;
 
-import Meatball.Kofte;
+import Meatball.Meatball;
 import Meatball.AppeziterDecorator;
 
 public class PepperSalad extends AppeziterDecorator {
-    Kofte kofte;
+    Meatball meatball;
 
-    public PepperSalad(Kofte kofte){
-        this.kofte = kofte;
+    public PepperSalad(Meatball meatball){
+        this.meatball = meatball;
     }
 
     @Override
     public double cost() {
-        return 1.95 + kofte.cost();
+        return 1.95 + meatball.cost();
     }
 
     @Override
     public String getDescription() {
-        return kofte.getDescription() + ", PepperSalad";
+        return meatball.getDescription() + ", PepperSalad";
     }
 }

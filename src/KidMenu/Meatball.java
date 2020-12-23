@@ -1,6 +1,6 @@
 package KidMenu;
 
-public class Meatball extends KidMenu{
+public class Meatball extends KidMenu {
     public Meatball(){
         description = "Kid Meatball Menu";
     }
