@@ -3,10 +3,10 @@ package KidMenu.SauceDecorators;
 import KidMenu.KidMenu;
 import KidMenu.SauceDecorator;
 
-public class Ketchup extends SauceDecorator {
+public class KidKetchup extends SauceDecorator {
     KidMenu kidMenu;
 
-    public Ketchup(KidMenu kidMenu) {
+    public KidKetchup(KidMenu kidMenu) {
         this.kidMenu = kidMenu;
     }
 

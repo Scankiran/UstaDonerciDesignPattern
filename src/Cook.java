@@ -3,6 +3,9 @@ import Doner.*;
 import Doner.TypeDecorators.*;
 import Factoryies.*;
 import KidMenu.KidMenu;
+import KidMenu.SauceDecorators.KidBarbeque;
+import KidMenu.SauceDecorators.KidKetchup;
+import KidMenu.SauceDecorators.KidMayonnaise;
 import KidMenu.ToyDecorators.*;
 import Meatball.AppetizerDecorators.Blarney;
 import Meatball.AppetizerDecorators.Grind;
@@ -15,7 +18,6 @@ import Meatball.FriesDecorators.SmallSize;
 import Meatball.Meatball;
 import Meatball.SaladDecorators.*;
 import Meatball.SauceDecorators.*;
-
 import java.util.ArrayList;
 
 public class Cook {
@@ -28,7 +30,7 @@ public class Cook {
     ArrayList<Doner> donerList;
     ArrayList<KidMenu> kidMenuList;
     ArrayList<Meatball> meatBallList;
-
+    double totalCost = 0;
     public void getOrder(String factoryType){
         switch (factoryType.toLowerCase()){
             case "hot beverage":
@@ -67,6 +69,7 @@ public class Cook {
 
         }
 
+
         //TODO: En son beverageleri prepare edip description ve costunu bastıracaksın.
         //TODO: En son donerleri prepare edip description ve costunu bastıracaksın.
         //TODO: En son köfteleri prepare edip description ve costunu bastıracaksın.
@@ -74,40 +77,71 @@ public class Cook {
 
     }
 
+    public void cookOrder() {
+        for (Beverage beverage:beverageList
+        ) {
+            beverage.prepareBeverage();
+            totalCost += beverage.cost();
+        }
+
+        for (Doner doner:donerList
+        ) {
+            doner.prepareDough(doner.getDescription());
+            doner.cookDough(doner.getDescription());
+            doner.dishUp(doner.getDescription());
+            totalCost += doner.cost();
+        }
+
+        for (Meatball meatball:meatBallList
+        ) {
+            meatball.prepareDough(meatball.getDescription());
+            meatball.cookDough(meatball.getDescription());
+            meatball.dishUp(meatball.getDescription());
+            totalCost = meatball.cost();
+        }
+
+        for (KidMenu kidmenu:kidMenuList
+        ) {
+            kidmenu.prepareDough(kidmenu.getDescription());
+            kidmenu.cookDough(kidmenu.getDescription());
+            kidmenu.dishUp(kidmenu.getDescription());
+            totalCost += kidmenu.cost();
+        }
+    }
+
     public Doner decorate(Doner doner, String typeDecorator){
         switch (typeDecorator) {
             case "iskender":
-                 new Iskender(doner);
+                 doner = new Iskender(doner);
             case "roll":
-                 new Roll(doner);
+                 doner = new Roll(doner);
             case "sandwich":
-                 new Sandwich(doner);
+                 doner = new Sandwich(doner);
             case "kilogram":
-                 new Kilogram(doner);
+                 doner = new Kilogram(doner);
             case "hamburger":
-                 new Hamburger(doner);
+                 doner = new Hamburger(doner);
             default:
 
         }
         return doner;
     }
 
-
     public Meatball decorate(Meatball meatball, String[] meatBallSaladList,String[] meatBallAppzetierList, String[]meatBallFriesList, String[]meatballSauceList){
         for (int i = 0; i < meatBallSaladList.length; i++) {
             switch (meatBallSaladList[i].toLowerCase()) {
                 case "coban":
-                     new CobanSalad(meatball);
+                     meatball = new CobanSalad(meatball);
                 case "gevurdagi":
-                     new GevurdagiSalad(meatball);
+                     meatball = new GevurdagiSalad(meatball);
                 case "mediterrian":
-                     new MediterrianSalad(meatball);
+                     meatball = new MediterrianSalad(meatball);
                 case "union":
-                     new OnlyOnion(meatball);
+                     meatball = new OnlyOnion(meatball);
                 case "pepper":
-                     new OnlyPepper(meatball);
+                     meatball = new OnlyPepper(meatball);
                 case "tomate":
-                     new OnlyTomate(meatball);
+                     meatball = new OnlyTomate(meatball);
                 default:
 
             }
@@ -116,13 +150,13 @@ public class Cook {
         for (int i = 0; i < meatBallAppzetierList.length; i++) {
             switch (meatBallAppzetierList[i].toLowerCase()) {
                 case "blarney":
-                     new Blarney(meatball);
+                     meatball = new Blarney(meatball);
                 case "grind":
-                     new Grind(meatball);
+                     meatball = new Grind(meatball);
                 case "peppersalad":
-                     new PepperSalad(meatball);
+                     meatball = new PepperSalad(meatball);
                 case "pickle":
-                     new Pickle(meatball);
+                     meatball = new Pickle(meatball);
                 default:
 
             }
@@ -131,13 +165,13 @@ public class Cook {
         for (int i = 0; i < meatBallFriesList.length; i++) {
             switch (meatBallFriesList[i].toLowerCase()) {
                 case "big":
-                     new BigSize(meatball);
+                     meatball = new BigSize(meatball);
                 case "mid":
-                     new MidSize(meatball);
+                     meatball = new MidSize(meatball);
                 case "small":
-                     new SmallSize(meatball);
+                     meatball = new SmallSize(meatball);
                 case "mega":
-                     new MegaSize(meatball);
+                     meatball = new MegaSize(meatball);
                 default:
 
             }
@@ -146,15 +180,15 @@ public class Cook {
         for (int i = 0; i < meatballSauceList.length; i++) {
             switch (meatballSauceList[i].toLowerCase()) {
                 case "barbeque":
-                     new Barbeque(meatball);
+                     meatball = new Barbeque(meatball);
                 case "hotsauce":
-                     new HotSauce(meatball);
+                     meatball = new HotSauce(meatball);
                 case "ketchup":
-                     new Ketchup(meatball);
+                     meatball = new Ketchup(meatball);
                 case "mayonnaise":
-                     new Mayonnaise(meatball);
+                     meatball = new Mayonnaise(meatball);
                 case "ustaranch":
-                     new UstaRanch(meatball);
+                     meatball = new UstaRanch(meatball);
                 default:
 
             }
@@ -166,19 +200,19 @@ public class Cook {
         for (int i = 0; i < kidMenuToyList.length; i++) {
             switch (kidMenuToyList[i].toLowerCase()) {
                 case "barbie":
-                     new Barbie(kidMenu);
+                     kidMenu = new Barbie(kidMenu);
                 case "batman":
-                     new Batman(kidMenu);
+                     kidMenu = new Batman(kidMenu);
                 case "hotwhells":
-                     new HotWhells(kidMenu);
+                     kidMenu = new HotWhells(kidMenu);
                 case "ironman":
-                     new IronMan(kidMenu);
+                     kidMenu = new IronMan(kidMenu);
                 case "spiderman":
-                     new SpiderMan(kidMenu);
+                     kidMenu = new SpiderMan(kidMenu);
                 case "spongebob":
-                     new SpongeBob(kidMenu);
+                     kidMenu = new SpongeBob(kidMenu);
                 case "winxclub":
-                     new WinxClubBaby(kidMenu);
+                     kidMenu = new WinxClubBaby(kidMenu);
                 default:
 
             }
@@ -187,11 +221,11 @@ public class Cook {
         for (int i = 0; i < kidMenuSauceList.length; i++) {
             switch (kidMenuSauceList[i].toLowerCase()) {
                 case "barbeque":
-                     new KidMenu.SauceDecorators.Barbeque(kidMenu);
+                     kidMenu = new KidBarbeque(kidMenu);
                 case "ketchup":
-                     new KidMenu.SauceDecorators.Ketchup(kidMenu);
+                     kidMenu = new KidKetchup(kidMenu);
                 case "mayonnaise":
-                     new KidMenu.SauceDecorators.Mayonnaise(kidMenu);
+                     kidMenu = new KidMayonnaise(kidMenu);
                 default:
 
             }
