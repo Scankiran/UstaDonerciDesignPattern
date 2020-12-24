@@ -3,9 +3,10 @@ package Commands;
 public class DonerOrder implements Command{
     Cook cook;
     String order,size;
-    public DonerOrder(Cook cook, String order){
+    public DonerOrder(Cook cook, String order,String size){
         this.cook = cook;
-        this.order= order;
+        this.order = order;
+        this.size = size;
     }
 
     @Override
