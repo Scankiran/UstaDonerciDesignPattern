@@ -1,3 +1,5 @@
+package Commands;
+
 import Beverage.Beverage;
 import Doner.*;
 import Doner.TypeDecorators.*;
@@ -31,14 +33,15 @@ public class Cook {
     ArrayList<KidMenu> kidMenuList;
     ArrayList<Meatball> meatBallList;
     double totalCost = 0;
+
     public void getOrder(String factoryType){
-        switch (factoryType.toLowerCase()){
-            case "hot beverage":
+        switch (factoryType){
+            case "hotBeverage":
                 System.out.println(hotBeverageType +"order reveived.");
                 HotBeverageFactory hotBevFactory = new HotBeverageFactory();
                 beverageList.add(hotBevFactory.makeBeverage(hotBeverageType));
 
-            case "cold beverage":
+            case "coldBeverage":
                 System.out.println(coldBeverageType +"order reveived.");
                 ColdBeverageFactory coldBevFactory = new ColdBeverageFactory();
                 beverageList.add(coldBevFactory.makeBeverage(coldBeverageType));
