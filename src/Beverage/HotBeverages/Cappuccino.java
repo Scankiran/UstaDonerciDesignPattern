@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Cappucino extends HotBeverage {
+public class Cappuccino extends HotBeverage {
     private double cost = 3.5;
     @Override
     public double cost() {

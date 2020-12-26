@@ -28,10 +28,10 @@ public class Cook {
     String[] meatBallSaladList, meatBallAppzetierList, meatBallFriesList, meatballSauceList;
     String[] kidMenuToyList, kidMenuSauceList;
 
-    ArrayList<Beverage> beverageList;
-    ArrayList<Doner> donerList;
-    ArrayList<KidMenu> kidMenuList;
-    ArrayList<Meatball> meatBallList;
+    ArrayList<Beverage> beverageList  = new ArrayList<>();
+    ArrayList<Doner> donerList = new ArrayList<>();
+    ArrayList<KidMenu> kidMenuList  = new ArrayList<>();
+    ArrayList<Meatball> meatBallList  = new ArrayList<>();
     double totalCost = 0;
 
     public void getOrder(String factoryType){
@@ -139,7 +139,7 @@ public class Cook {
                      meatball = new GevurdagiSalad(meatball);
                 case "mediterrian":
                      meatball = new MediterrianSalad(meatball);
-                case "union":
+                case "onion":
                      meatball = new OnlyOnion(meatball);
                 case "pepper":
                      meatball = new OnlyPepper(meatball);

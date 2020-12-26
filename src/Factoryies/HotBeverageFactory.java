@@ -6,21 +6,21 @@ import Beverage.HotBeverages.*;
 public class HotBeverageFactory {
     public Beverage makeBeverage(String beverageType) {
         switch (beverageType){
-            case "Black Cofee":
+            case "black":
                 return new BlackCoffee();
-            case "Cappucino":
-                return new Cappucino();
-            case "Hot Chocolate":
+            case "cappuccino":
+                return new Cappuccino();
+            case "hotchocolate":
                 return new HotChocolate();
-            case "Latte":
+            case "latte":
                 return new Latte();
-            case "Mocha":
+            case "mocha":
                 return new Mocha();
-            case "Nescafe":
+            case "nescafe":
                 return new Nescafe();
-            case "Oralet":
+            case "oralet":
                 return new Oralet();
-            case "Tea":
+            case "tea":
                 return new Tea();
             default:
                 return null;

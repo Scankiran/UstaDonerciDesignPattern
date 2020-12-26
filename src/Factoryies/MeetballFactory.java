@@ -5,15 +5,15 @@ import Meatball.*;
 public class MeetballFactory {
     public Meatball makeMeatBall(String meatballType) {
         switch (meatballType){
-            case "Normal":
+            case "serving":
                 return new ServingSize();
-            case "Five Meatball":
+            case "five":
                 return new WithFive();
-            case "With Pita":
+            case "pita":
                 return new WithPita();
-            case "Kilogram":
+            case "kilogram":
                 return new KilogramsSize();
-            case "Sandwich":
+            case "sandwich":
                 return new Sandwich();
             default:
                 return null;

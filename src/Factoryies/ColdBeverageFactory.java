@@ -6,21 +6,21 @@ import Beverage.ColdBeverages.*;
 public class ColdBeverageFactory {
     public Beverage makeBeverage(String beverageType) {
         switch (beverageType){
-            case "Ayran":
+            case "ayran":
                 return new Ayran();
-            case "Cola":
+            case "cola":
                 return new Cola();
-            case "Fanta":
+            case "fanta":
                 return new Fanta();
-            case "FuseTea":
+            case "fuseTea":
                 return new FuseTea();
-            case "Lemonade":
+            case "lemonade":
                 return new Lemonade();
-            case "Sprite":
+            case "sprite":
                 return new Sprite();
-            case "Water":
+            case "water":
                 return new Water();
-            case "Orange Juice":
+            case "orangeJuice":
                 return new OrangeJuice();
             default:
                 return null;

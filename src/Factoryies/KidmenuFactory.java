@@ -5,11 +5,11 @@ import KidMenu.*;
 public class KidmenuFactory {
     public KidMenu makeKidMenu(String kidmenuType) {
         switch (kidmenuType){
-            case "Meat":
+            case "meat":
                 return new MeatSandwich();
-            case "Chicken":
+            case "chicken":
                 return new ChickenSandwich();
-            case "Meatball":
+            case "meatball":
                 return new Meatball();
             default:
                 return null;

@@ -1,7 +1,8 @@
-import Commands.Cook;
-import Commands.DonerOrder;
-import Commands.Waitress;
+import Beverage.ColdBeverage;
+import Commands.*;
+import Meatball.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Client {
@@ -13,7 +14,9 @@ public class Client {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("********* Welcome to The Usta Donerci *********");
-        while(true) {
+
+        boolean whileLoopKey = true;
+        while(whileLoopKey) {
             System.out.println("What do you want to order?");
             System.out.println("1 --> Doner");
             System.out.println("2 --> Meatball");
@@ -25,14 +28,31 @@ public class Client {
 
             switch (orderType){
                 case 1:
-                    donerMenu(scanner);
+                    selectDonerType(scanner);
+                    break;
+                case 2:
+                    selectMeatball(scanner);
+                    break;
+                case 3:
+                    selectKidmenu(scanner);
+                    break;
+                case 4:
+                    selectBeverageType(scanner);
+                default:
+                    whileLoopKey = false;
+                    break;
             }
         }
+
+        cook.cookOrder();
+
+
     }
 
 
-    private static void donerMenu(Scanner scanner){
-        while(true) {
+    private static void selectDonerType(Scanner scanner){
+        boolean whileLoopKey = true;
+        while(whileLoopKey) {
             System.out.println("Which type do you want?");
             System.out.println("1 --> Meat");
             System.out.println("2 --> Chicken");
@@ -41,28 +61,120 @@ public class Client {
             int selection = scanner.nextInt();
             switch (selection) {
                 case 1:
-                    lastPartOfDoner("meat",scanner);
+                    selectDonerSize("meat",scanner);
+                    break;
                 case 2:
-                    lastPartOfDoner("chicken",scanner);
+                    selectDonerSize("chicken",scanner);
+                    break;
                 default:
-                    continue;
+                    whileLoopKey = false;
+                    break;
             }
         }
     }
 
-    private void meatballMenu(){
+    private static void selectMeatball(Scanner scanner){
+        boolean whileLoopKey = true;
+        while(whileLoopKey) {
+            System.out.println("Which size do you want?");
+            System.out.println("1 --> Serving Size");
+            System.out.println("2 --> Serving size with pita");
+            System.out.println("3 --> 1 kilogram");
+            System.out.println("4 --> Sandwich");
+            System.out.println("5 --> 5 piece of meatball");
+            System.out.println(("0 --> I dont want to Meatball. Back."));
+
+            int selection = scanner.nextInt();
+            switch (selection){
+                case 1:
+                    MeatballOrder meatballServing = selectMeatballDecorator("serving",scanner);
+                    waitress.takeOrder(meatballServing);
+                    break;
+
+                case 2:
+                    MeatballOrder meatballPita = selectMeatballDecorator("pita",scanner);
+                    waitress.takeOrder(meatballPita);
+                    break;
+
+                case 3:
+                    MeatballOrder meatballKilogram = selectMeatballDecorator("kilogram",scanner);
+                    waitress.takeOrder(meatballKilogram);
+                    break;
+
+                case 4:
+                    MeatballOrder meatballSandwich = selectMeatballDecorator("sandwich",scanner);
+                    waitress.takeOrder(meatballSandwich);
+                    break;
+
+                case 5:
+                    MeatballOrder meatballFive = selectMeatballDecorator("five",scanner);
+                    waitress.takeOrder(meatballFive);
+                    break;
+                default:
+                    whileLoopKey = false;
+                    break;
+            }
+        }
 
     }
 
-    private void kidMenu(){
+    private static void selectKidmenu(Scanner scanner){
+        boolean whileLoop = true;
+        while(whileLoop) {
+            System.out.println("Which type do you want?");
+            System.out.println("1 --> Meat");
+            System.out.println("2 --> Chicken");
+            System.out.println("3 --> Meatball");
+            System.out.println(("0 --> I dont want to Doner. Back."));
 
+            int selection = scanner.nextInt();
+            switch (selection) {
+                case 1:
+                    KidmenuOrder meatKidmenu = selectKidMenuDecorator("meat",scanner);
+                    waitress.takeOrder(meatKidmenu);
+                    break;
+                case 2:
+                    KidmenuOrder chickenKidmenu = selectKidMenuDecorator("chicken",scanner);
+                    waitress.takeOrder(chickenKidmenu);
+                    break;
+                case 3:
+                    KidmenuOrder meatballKidmenu = selectKidMenuDecorator("meatball",scanner);
+                    waitress.takeOrder(meatballKidmenu);
+                    break;
+                default:
+                    whileLoop = false;
+                    break;
+            }
+        }
     }
 
-    private void beverageMenu(){
+    private static void selectBeverageType(Scanner scanner){
+        boolean whileLoopKey = true;
+        while(whileLoopKey) {
+            System.out.println("Which type of beverage you want to drink?");
+            System.out.println("1 --> Hot");
+            System.out.println("2 --> Cold");
+            System.out.println("0 --> I don't want to beverage. Back.");
 
+            int beverageType = scanner.nextInt();
+
+            switch (beverageType) {
+                case 1:
+                    selectHoldBeverage(scanner);
+                    break;
+
+                case 2:
+                    selectColdBeverage(scanner);
+                    break;
+
+                default:
+                    whileLoopKey = false;
+                    break;
+            }
+        }
     }
 
-    private static void lastPartOfDoner(String order,Scanner scanner) {
+    private static void selectDonerSize(String order, Scanner scanner) {
         System.out.println("Which size do you want?");
         System.out.println("1 --> Iskender");
         System.out.println("2 --> Roll");
@@ -92,4 +204,352 @@ public class Client {
                 break;
         }
     }
+
+    private static MeatballOrder selectMeatballDecorator(String order, Scanner scanner){
+        ArrayList<String> sauceList = new ArrayList<>();
+        ArrayList<String> saladList = new ArrayList<>();
+        ArrayList<String> appzetierList = new ArrayList<>();
+        ArrayList<String> friesList = new ArrayList<>();
+
+        boolean whileLoopKey = true;
+        while (whileLoopKey) {
+            System.out.println("What do you want to with your meatball?");
+            System.out.println("1 --> Salad");
+            System.out.println("2 --> Appzetier");
+            System.out.println("3 --> Sauce");
+            System.out.println("4 --> Fries");
+            System.out.println(("0 --> Nothing."));
+
+            int selection = scanner.nextInt();
+
+            switch (selection) {
+                case 1:
+                    System.out.println("Which salad do you want?");
+                    System.out.println("1 --> Mediterrian");
+                    System.out.println("2 --> Coban");
+                    System.out.println("3 --> Gevurdagi");
+                    System.out.println("4 --> Onion");
+                    System.out.println("5 --> Pepper");
+                    System.out.println("6 --> Tomato");
+                    System.out.println(("0 --> Nothing."));
+
+                    int salad = scanner.nextInt();
+
+                    switch (salad) {
+                        case 1:
+                            saladList.add("mediterrian");
+                            break;
+                        case 2:
+                            saladList.add("coban");
+                            break;
+                        case 3:
+                            saladList.add("gevurdagi");
+                            break;
+                        case 4:
+                            saladList.add("onion");
+                            break;
+                        case 5:
+                            saladList.add("pepper");
+                            break;
+                        case 6:
+                            saladList.add("tomate");
+                            break;
+
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("Which appzetier do you want?");
+                    System.out.println("1 --> Blarney");
+                    System.out.println("2 --> Grind");
+                    System.out.println("3 --> Pepper Salad");
+                    System.out.println("4 --> Pickle");
+                    System.out.println(("0 --> Nothing."));
+
+                    int appzetier = scanner.nextInt();
+
+                    switch (appzetier) {
+                        case 1:
+                            appzetierList.add("blarney");
+                            break;
+                        case 2:
+                            appzetierList.add("grind");
+                            break;
+                        case 3:
+                            appzetierList.add("peppersalad");
+                            break;
+                        case 4:
+                            appzetierList.add("pickle");
+                            break;
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("Which sauce do you want?");
+                    System.out.println("1 --> Barbeque");
+                    System.out.println("2 --> Hot Sauce");
+                    System.out.println("3 --> Ketchup");
+                    System.out.println("4 --> Mayonnaise");
+                    System.out.println("5 --> Usta Ranch");
+                    System.out.println(("0 --> Nothing."));
+
+                    int sauce = scanner.nextInt();
+
+                    switch (sauce) {
+                        case 1:
+                            sauceList.add("barbeque");
+                            break;
+                        case 2:
+                            sauceList.add("hotsauce");
+                            break;
+                        case 3:
+                            sauceList.add("ketchup");
+                            break;
+                        case 4:
+                            sauceList.add("mayonnaise");
+                            break;
+                        case 5:
+                            sauceList.add("ustaranch");
+                            break;
+
+                    }
+                    break;
+
+                case 4:
+                    System.out.println("Which fries size do you want?");
+                    System.out.println("1 --> Big Size");
+                    System.out.println("2 --> Mid Size");
+                    System.out.println("3 --> Small Size");
+                    System.out.println("4 --> Mega Size");
+
+                    System.out.println(("0 --> Nothing."));
+
+                    int fries = scanner.nextInt();
+
+                    switch (fries){
+                        case 1:
+                            friesList.add("big");
+                            break;
+                        case 2:
+                            friesList.add("mid");
+                            break;
+                        case 3:
+                            friesList.add("small");
+                            break;
+                        case 4:
+                            friesList.add("mega");
+                            break;
+                    }
+                    break;
+
+                default:
+                    whileLoopKey = false;
+                    break;
+            }
+
+        }
+
+            String[] saladArr = (String[])saladList.toArray();
+            String[] appzetierArr = (String[])appzetierList.toArray();
+            String[] sauceArr = (String[])sauceList.toArray();
+            String[] friesArr = (String[])friesList.toArray();
+            return new MeatballOrder(cook,order,saladArr,appzetierArr,friesArr,sauceArr);
+    }
+
+    private static KidmenuOrder selectKidMenuDecorator(String order,Scanner scanner) {
+        ArrayList<String> toyList = new ArrayList<>();
+        ArrayList<String> kidSauceList = new ArrayList<>();
+
+        boolean whileLoopKey = true;
+        while(whileLoopKey) {
+            System.out.println("What do you want to with your kidmenu?");
+            System.out.println("1 --> Toy");
+            System.out.println("2 --> Sauce");
+            System.out.println(("0 --> Nothing."));
+
+            int selection = scanner.nextInt();
+
+            switch (selection){
+                case 1:
+                    System.out.println("Which toy do you want?");
+                    System.out.println("1 --> Barbie Baby");
+                    System.out.println("2 --> Winx Club Baby");
+                    System.out.println("3 --> Batman");
+                    System.out.println("4 --> Hot Whells");
+                    System.out.println("5 --> Iron-Man");
+                    System.out.println("6 --> Spider-Man");
+                    System.out.println("7 --> Sponge Bob");
+                    System.out.println(("0 --> Nothing."));
+
+                    int toy = scanner.nextInt();
+
+                    switch (toy) {
+                        case 1:
+                            toyList.add("barbie");
+                            break;
+                        case 2:
+                            toyList.add("winxclub");
+                            break;
+                        case 3:
+                            toyList.add("batman");
+                            break;
+                        case 4:
+                            toyList.add("hotwhells");
+                            break;
+                        case 5:
+                            toyList.add("ironman");
+                            break;
+                        case 6:
+                            toyList.add("spiderman");
+                            break;
+                        case 7:
+                            toyList.add("spongebob");
+                            break;
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("Which sauce do you want?");
+                    System.out.println("1 --> Ketchup");
+                    System.out.println("2 --> Mayonnaise");
+                    System.out.println("3 --> Barbeque");
+
+                    System.out.println(("0 --> Nothing."));
+
+                    int sauce = scanner.nextInt();
+
+                    switch (sauce){
+                        case 1:
+                            kidSauceList.add("ketchup");
+                            break;
+                        case 2:
+                            kidSauceList.add("mayonnaise");
+                            break;
+                        case 3:
+                            kidSauceList.add("barbeque");
+                            break;
+                    }
+                    break;
+
+                default:
+                    whileLoopKey = false;
+                    break;
+            }
+
+        }
+        String[] kidSauceArr = (String[]) kidSauceList.toArray();
+        String[] toyArr = (String[])toyList.toArray();
+
+        return new KidmenuOrder(cook,order,toyArr,kidSauceArr);
+    }
+
+    private static void selectColdBeverage(Scanner scanner){
+        System.out.println("What do you want to drink?");
+        System.out.println("1 --> Ayran");
+        System.out.println("2 --> Cola");
+        System.out.println("3 --> Fanta");
+        System.out.println("4 --> FuseTea");
+        System.out.println("5 --> lemonade");
+        System.out.println("6 --> Lprite");
+        System.out.println("7 --> Water");
+        System.out.println("8 --> Orange Juice");
+        System.out.println("0 --> I don't want to beverage. Back.");
+
+        int coldSelection = scanner.nextInt();
+
+        switch (coldSelection) {
+            case 1:
+                ColdBeverageOrder blackCofeeorder = new ColdBeverageOrder(cook, "ayran");
+                waitress.takeOrder(blackCofeeorder);
+                break;
+            case 2:
+                ColdBeverageOrder cappuccinoOrder = new ColdBeverageOrder(cook, "cola");
+                waitress.takeOrder(cappuccinoOrder);
+                break;
+            case 3:
+                ColdBeverageOrder hotChocOrder = new ColdBeverageOrder(cook, "fanta");
+                waitress.takeOrder(hotChocOrder);
+                break;
+            case 4:
+                ColdBeverageOrder latterOrder = new ColdBeverageOrder(cook, "fuseTea");
+                waitress.takeOrder(latterOrder);
+                break;
+            case 5:
+                ColdBeverageOrder mochaOrder = new ColdBeverageOrder(cook, "lemonade");
+                waitress.takeOrder(mochaOrder);
+                break;
+            case 6:
+                ColdBeverageOrder nescafeOrder = new ColdBeverageOrder(cook, "sprite");
+                waitress.takeOrder(nescafeOrder);
+                break;
+            case 7:
+                ColdBeverageOrder oraletOrder = new ColdBeverageOrder(cook, "water");
+                waitress.takeOrder(oraletOrder);
+                break;
+            case 8:
+                ColdBeverageOrder teaOrder = new ColdBeverageOrder(cook, "orangeJuice");
+                waitress.takeOrder(teaOrder);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private static void selectHoldBeverage(Scanner scanner) {
+        System.out.println("What do you want to drink?");
+        System.out.println("1 --> Black Coffee");
+        System.out.println("2 --> Cappuccino");
+        System.out.println("3 --> Espresso");
+        System.out.println("4 --> Hot Chocolate");
+        System.out.println("5 --> Latte");
+        System.out.println("6 --> Mocha");
+        System.out.println("7 --> Oralet");
+        System.out.println("8 --> Tea");
+        System.out.println("0 --> I don't want to beverage. Back.");
+
+        int hotSelection = scanner.nextInt();
+
+        switch (hotSelection) {
+            case 1:
+                HotBeverageOrder blackCofeeorder = new HotBeverageOrder(cook, "black");
+                waitress.takeOrder(blackCofeeorder);
+                break;
+            case 2:
+                HotBeverageOrder cappuccinoOrder = new HotBeverageOrder(cook, "cappuccino");
+                waitress.takeOrder(cappuccinoOrder);
+                break;
+            case 3:
+                HotBeverageOrder hotChocOrder = new HotBeverageOrder(cook, "hotchocolate");
+                waitress.takeOrder(hotChocOrder);
+                break;
+            case 4:
+                HotBeverageOrder latterOrder = new HotBeverageOrder(cook, "latte");
+                waitress.takeOrder(latterOrder);
+                break;
+            case 5:
+                HotBeverageOrder mochaOrder = new HotBeverageOrder(cook, "mocha");
+                waitress.takeOrder(mochaOrder);
+                break;
+            case 6:
+                HotBeverageOrder nescafeOrder = new HotBeverageOrder(cook, "nescafe");
+                waitress.takeOrder(nescafeOrder);
+                break;
+            case 7:
+                HotBeverageOrder oraletOrder = new HotBeverageOrder(cook, "oralet");
+                waitress.takeOrder(oraletOrder);
+                break;
+            case 8:
+                HotBeverageOrder teaOrder = new HotBeverageOrder(cook, "tea");
+                waitress.takeOrder(teaOrder);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+
+
+
 }
