@@ -40,19 +40,22 @@ public class Cook {
                 System.out.println(hotBeverageType +"order reveived.");
                 HotBeverageFactory hotBevFactory = new HotBeverageFactory();
                 beverageList.add(hotBevFactory.makeBeverage(hotBeverageType));
+                break;
 
             case "coldBeverage":
                 System.out.println(coldBeverageType +"order reveived.");
                 ColdBeverageFactory coldBevFactory = new ColdBeverageFactory();
                 beverageList.add(coldBevFactory.makeBeverage(coldBeverageType));
+                break;
 
             case "doner":
                 System.out.println(donerType +"order reveived.");
                 DonerFactory donerFactory = new DonerFactory();
                 Doner orderedDoner = donerFactory.makeDoner(donerType);
-                orderedDoner = decorate(orderedDoner,donerType);
+                orderedDoner = decorate(orderedDoner,donerSize);
                 //TODO: Doner type'a bakılacak. 'Debugging'
                 donerList.add(orderedDoner);
+                break;
 
             case "meatball":
                 System.out.println(meatballType +"order reveived.");
@@ -61,6 +64,7 @@ public class Cook {
                 orderedMeatball = decorate(orderedMeatball,meatBallSaladList,meatBallAppzetierList,meatBallFriesList,meatballSauceList);
                 //TODO: meeBall decore edilecek.
                 meatBallList.add(orderedMeatball);
+                break;
 
             case "kidmenu":
                 System.out.println(kidmenuType +"order reveived.");
@@ -69,6 +73,7 @@ public class Cook {
                 orderedKidMenu = decorate(orderedKidMenu,kidMenuToyList,kidMenuSauceList);
                 //TODO: kidMenu decore edilecek.
                 kidMenuList.add(orderedKidMenu);
+                break;
 
         }
 
@@ -85,6 +90,7 @@ public class Cook {
         ) {
             beverage.prepareBeverage();
             totalCost += beverage.cost();
+            System.out.println(beverage.getDescription() + "cost is --> "+ beverage.cost());
         }
 
         for (Doner doner:donerList
@@ -92,6 +98,7 @@ public class Cook {
             doner.prepareDough(doner.getDescription());
             doner.cookDough(doner.getDescription());
             doner.dishUp(doner.getDescription());
+            System.out.println(doner.getDescription() + "cost is --> "+ doner.cost());
             totalCost += doner.cost();
         }
 
@@ -100,6 +107,7 @@ public class Cook {
             meatball.prepareDough(meatball.getDescription());
             meatball.cookDough(meatball.getDescription());
             meatball.dishUp(meatball.getDescription());
+            System.out.println(meatball.getDescription() + "cost is --> "+ meatball.cost());
             totalCost = meatball.cost();
         }
 
@@ -108,24 +116,32 @@ public class Cook {
             kidmenu.prepareDough(kidmenu.getDescription());
             kidmenu.cookDough(kidmenu.getDescription());
             kidmenu.dishUp(kidmenu.getDescription());
+            System.out.println(kidmenu.getDescription() + "cost is --> "+ kidmenu.cost());
             totalCost += kidmenu.cost();
         }
+
+        System.err.println("Total cost is " + totalCost);
     }
 
     public Doner decorate(Doner doner, String typeDecorator){
         switch (typeDecorator) {
             case "iskender":
                  doner = new Iskender(doner);
+                 break;
             case "roll":
                  doner = new Roll(doner);
+                 break;
             case "sandwich":
                  doner = new Sandwich(doner);
+                 break;
             case "kilogram":
                  doner = new Kilogram(doner);
+                 break;
             case "hamburger":
                  doner = new Hamburger(doner);
+                 break;
             default:
-
+                break;
         }
         return doner;
     }
@@ -135,17 +151,23 @@ public class Cook {
             switch (meatBallSaladList[i].toLowerCase()) {
                 case "coban":
                      meatball = new CobanSalad(meatball);
+                     break;
                 case "gevurdagi":
                      meatball = new GevurdagiSalad(meatball);
+                     break;
                 case "mediterrian":
                      meatball = new MediterrianSalad(meatball);
+                     break;
                 case "onion":
                      meatball = new OnlyOnion(meatball);
                 case "pepper":
                      meatball = new OnlyPepper(meatball);
+                     break;
                 case "tomate":
                      meatball = new OnlyTomate(meatball);
+                     break;
                 default:
+                    break;
 
             }
         }
@@ -154,13 +176,18 @@ public class Cook {
             switch (meatBallAppzetierList[i].toLowerCase()) {
                 case "blarney":
                      meatball = new Blarney(meatball);
+                     break;
                 case "grind":
                      meatball = new Grind(meatball);
+                     break;
                 case "peppersalad":
                      meatball = new PepperSalad(meatball);
+                     break;
                 case "pickle":
                      meatball = new Pickle(meatball);
+                     break;
                 default:
+                    break;
 
             }
         }
@@ -169,13 +196,18 @@ public class Cook {
             switch (meatBallFriesList[i].toLowerCase()) {
                 case "big":
                      meatball = new BigSize(meatball);
+                     break;
                 case "mid":
                      meatball = new MidSize(meatball);
+                     break;
                 case "small":
                      meatball = new SmallSize(meatball);
+                     break;
                 case "mega":
                      meatball = new MegaSize(meatball);
+                     break;
                 default:
+                    break;
 
             }
         }
@@ -184,15 +216,21 @@ public class Cook {
             switch (meatballSauceList[i].toLowerCase()) {
                 case "barbeque":
                      meatball = new Barbeque(meatball);
+                     break;
                 case "hotsauce":
                      meatball = new HotSauce(meatball);
+                     break;
                 case "ketchup":
                      meatball = new Ketchup(meatball);
+                     break;
                 case "mayonnaise":
                      meatball = new Mayonnaise(meatball);
+                     break;
                 case "ustaranch":
                      meatball = new UstaRanch(meatball);
+                     break;
                 default:
+                    break;
 
             }
         }
@@ -204,19 +242,27 @@ public class Cook {
             switch (kidMenuToyList[i].toLowerCase()) {
                 case "barbie":
                      kidMenu = new Barbie(kidMenu);
+                     break;
                 case "batman":
                      kidMenu = new Batman(kidMenu);
+                     break;
                 case "hotwhells":
                      kidMenu = new HotWhells(kidMenu);
+                     break;
                 case "ironman":
                      kidMenu = new IronMan(kidMenu);
+                     break;
                 case "spiderman":
                      kidMenu = new SpiderMan(kidMenu);
+                     break;
                 case "spongebob":
                      kidMenu = new SpongeBob(kidMenu);
+                     break;
                 case "winxclub":
                      kidMenu = new WinxClubBaby(kidMenu);
+                     break;
                 default:
+                    break;
 
             }
         }
@@ -225,11 +271,15 @@ public class Cook {
             switch (kidMenuSauceList[i].toLowerCase()) {
                 case "barbeque":
                      kidMenu = new KidBarbeque(kidMenu);
+                     break;
                 case "ketchup":
                      kidMenu = new KidKetchup(kidMenu);
+                     break;
                 case "mayonnaise":
                      kidMenu = new KidMayonnaise(kidMenu);
+                     break;
                 default:
+                    break;
 
             }
         }

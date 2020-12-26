@@ -16,7 +16,7 @@ public class MeatballOrder implements Command{
 
     @Override
     public void orderUp() {
-        cook.kidmenuType = order;
+        cook.meatballType = order;
         cook.meatBallSaladList = meatBallSaladList;
         cook.meatBallAppzetierList = meatBallAppzetierList;
         cook.meatBallFriesList = meatBallFriesList;

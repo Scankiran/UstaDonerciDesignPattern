@@ -38,6 +38,7 @@ public class Client {
                     break;
                 case 4:
                     selectBeverageType(scanner);
+                    break;
                 default:
                     whileLoopKey = false;
                     break;
@@ -45,7 +46,6 @@ public class Client {
         }
 
         cook.cookOrder();
-
 
     }
 
@@ -188,18 +188,23 @@ public class Client {
             case 1:
                 DonerOrder donerIskender = new DonerOrder(cook,order,"iskender");
                 waitress.takeOrder(donerIskender);
+                break;
             case 2:
                 DonerOrder donerRoll = new DonerOrder(cook,order,"roll");
                 waitress.takeOrder(donerRoll);
+                break;
             case 3:
                 DonerOrder donerHamburger = new DonerOrder(cook,order,"hamburger");
                 waitress.takeOrder(donerHamburger);
+                break;
             case 4:
                 DonerOrder donerSandwich = new DonerOrder(cook,order,"sandwich");
                 waitress.takeOrder(donerSandwich);
+                break;
             case 5:
                 DonerOrder donerKilogram = new DonerOrder(cook,order,"kilogram");
                 waitress.takeOrder(donerKilogram);
+                break;
             case 0:
                 break;
         }
@@ -349,10 +354,15 @@ public class Client {
 
         }
 
-            String[] saladArr = (String[])saladList.toArray();
-            String[] appzetierArr = (String[])appzetierList.toArray();
-            String[] sauceArr = (String[])sauceList.toArray();
-            String[] friesArr = (String[])friesList.toArray();
+            String[] saladArr = new String[saladList.size()];
+            String[] appzetierArr = new String[appzetierList.size()];
+            String[] sauceArr = new String[sauceList.size()];
+            String[] friesArr = new String[friesList.size()];
+
+            saladArr = saladList.toArray(saladArr);
+            appzetierArr = appzetierList.toArray(appzetierArr);
+            sauceArr = sauceList.toArray(sauceArr);
+            friesArr = friesList.toArray(friesArr);
             return new MeatballOrder(cook,order,saladArr,appzetierArr,friesArr,sauceArr);
     }
 
@@ -437,8 +447,10 @@ public class Client {
             }
 
         }
-        String[] kidSauceArr = (String[]) kidSauceList.toArray();
-        String[] toyArr = (String[])toyList.toArray();
+        String[] kidSauceArr = new String[kidSauceList.size()];
+        String[] toyArr = new String[toyList.size()];
+        kidSauceArr = kidSauceList.toArray(kidSauceArr);
+        toyArr = toyList.toArray(toyArr);
 
         return new KidmenuOrder(cook,order,toyArr,kidSauceArr);
     }
