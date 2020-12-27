@@ -1,10 +1,10 @@
-##Statement Of The Work
+## Statement Of The Work
 
 Usta Donerci is a restaurant that sells fast-food, doner, meatball and drinks. When customer arrive at this restaurant, they can select their order and design order with custom product which is decorator. After create order, the waitress delivers these orders to the cook from the customer. The cook is responsible for cook eatable order and preparing the drink according to customer order. 
 
 Customer can select Doners, Beverages, Meatballs and Kid Size menu as a menu. They can select doner type and doner size in the doner menu. In the beverage menu, they can select hot or cold beverage and if they want to cold, they can add ice. If they want hot beverage, they can add extra component to their beverages which differ beverages. In the meatball menu they can select which size of meatball and they can modifies  their meatball order with salad, appetizer , fries, sauce. In the kid size menu, they can select meat, meatball or chicken sandwich type and they can buy toy and sauce. 
 
-##Proposed Pattern
+## Proposed Pattern
 
 Many design patterns are applied for solving existing problems in the project. These design patterns are Command Pattern, Simple Factory Pattern, Template Method Pattern and Decorator Pattern.
 
@@ -21,6 +21,6 @@ There are 4 Decorator classes for KidMenu decoration such as Salad Decorator, Ap
 
 Finally, Beverage Factories is responsible for hot and cold beverages creation and creates Beverage interface. Hot Beverage and Cold Beverage abstract classes implement this interface. Subclasses such as tea, coffee, cola etc. extend these classes. The distinction between them is the difference in the preparation of hot and cold beverages (Template Method Pattern). Also, there are some differences in subclasses. Finally, hook() is used for each hot beverage and the customer is asked if some extra condiments are wanted. 
 
-##UML Diagram
+## UML Diagram
 ![general](https://i.hizliresim.com/lA3ccr.png)
 
