@@ -2,7 +2,7 @@ package Meatball;
 
 public class WithFive extends Meatball {
     public WithFive(){
-        description = "Sandwich Kofte";
+        description = "Five piece of meatball";
     }
 
     @Override

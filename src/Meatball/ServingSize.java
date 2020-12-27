@@ -2,7 +2,7 @@ package Meatball;
 
 public class ServingSize extends Meatball {
     public ServingSize(){
-        description = "Sandwich Kofte";
+        description = "Serving size Meatball";
     }
 
     @Override

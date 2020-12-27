@@ -10,14 +10,14 @@ public abstract class Meatball {
     }
 
     public void prepareDough(String type) {
-        System.out.println("Preparing "+ type + " kofte");
+        System.out.println("Preparing "+ type + " meatball");
     }
 
     public void cookDough(String type) {
-        System.out.println("Cooking " + type + " kofte");
+        System.out.println("Cooking " + type + " meatball");
     }
 
     public void dishUp(String type) {
-        System.out.println("Put " + type + " köfte on the dish");
+        System.out.println("Put " + type + " meatball on the dish");
     }
 }

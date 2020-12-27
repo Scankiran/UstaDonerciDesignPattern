@@ -2,7 +2,7 @@ package Meatball;
 
 public class Sandwich extends Meatball {
     public Sandwich(){
-        description = "Sandwich Kofte";
+        description = "Sandwich Meatball";
     }
 
     @Override

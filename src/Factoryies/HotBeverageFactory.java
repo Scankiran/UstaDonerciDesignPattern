@@ -11,6 +11,8 @@ public class HotBeverageFactory implements BeverageFactory{
                 return new BlackCoffee();
             case "cappuccino":
                 return new Cappuccino();
+            case "espresso":
+                return new Espresso();
             case "hotchocolate":
                 return new HotChocolate();
             case "latte":

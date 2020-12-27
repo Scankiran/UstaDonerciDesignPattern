@@ -23,7 +23,6 @@ import Meatball.SauceDecorators.*;
 import java.util.ArrayList;
 
 public class Cook {
-    //TODO: Clienttan gönderirken listler devamlı değişek. Tüm decoratorları tutmaya gerek yok. O anki objenin decoratörlerini tutup decore edip bırakalım.
     String hotBeverageType, coldBeverageType, donerType, donerSize, meatballType, kidmenuType;
     String[] meatBallSaladList, meatBallAppzetierList, meatBallFriesList, meatballSauceList;
     String[] kidMenuToyList, kidMenuSauceList;
@@ -37,19 +36,21 @@ public class Cook {
     public void getOrder(String factoryType){
         switch (factoryType){
             case "hotBeverage":
-                System.out.println(hotBeverageType +"order reveived.");
                 HotBeverageFactory hotBevFactory = new HotBeverageFactory();
-                beverageList.add(hotBevFactory.makeBeverage(hotBeverageType));
+                Beverage orderedHotBeverage = hotBevFactory.makeBeverage(hotBeverageType);
+                System.out.println(orderedHotBeverage.getDescription() +" order reveived.\n");
+                beverageList.add(orderedHotBeverage);
                 break;
 
             case "coldBeverage":
-                System.out.println(coldBeverageType +"order reveived.");
                 ColdBeverageFactory coldBevFactory = new ColdBeverageFactory();
-                beverageList.add(coldBevFactory.makeBeverage(coldBeverageType));
+                Beverage orderedColdBeverage = coldBevFactory.makeBeverage(coldBeverageType);
+                System.out.println(orderedColdBeverage.getDescription() +" order reveived.\n");
+                beverageList.add(orderedColdBeverage);
                 break;
 
             case "doner":
-                System.out.println(donerType +"order reveived.");
+                System.out.println(donerSize + " size " + donerType +" doner order reveived.\n");
                 DonerFactory donerFactory = new DonerFactory();
                 Doner orderedDoner = donerFactory.makeDoner(donerType);
                 orderedDoner = decorate(orderedDoner,donerSize);
@@ -57,18 +58,18 @@ public class Cook {
                 break;
 
             case "meatball":
-                System.out.println(meatballType +"order reveived.");
                 MeetballFactory meatballFactory = new MeetballFactory();
                 Meatball orderedMeatball = meatballFactory.makeMeatBall(meatballType);
                 orderedMeatball = decorate(orderedMeatball,meatBallSaladList,meatBallAppzetierList,meatBallFriesList,meatballSauceList);
+                System.out.println(orderedMeatball.getDescription() + " meatball order reveived.\n");
                 meatBallList.add(orderedMeatball);
                 break;
 
             case "kidmenu":
-                System.out.println(kidmenuType +"order reveived.");
                 KidmenuFactory kidFactory = new KidmenuFactory();
                 KidMenu orderedKidMenu = kidFactory.makeKidMenu(kidmenuType);
                 orderedKidMenu = decorate(orderedKidMenu,kidMenuToyList,kidMenuSauceList);
+                System.out.println(orderedKidMenu.getDescription() +" order reveived.\n");
                 kidMenuList.add(orderedKidMenu);
                 break;
 
@@ -81,7 +82,7 @@ public class Cook {
         ) {
             beverage.prepareBeverage();
             totalCost += beverage.cost();
-            System.out.println(beverage.getDescription() + "cost is --> "+ beverage.cost());
+            System.out.println(beverage.getDescription() + " cost is --> "+ beverage.cost() +"\n\n");
         }
 
         for (Doner doner:donerList
@@ -89,7 +90,7 @@ public class Cook {
             doner.prepareDough(doner.getDescription());
             doner.cookDough(doner.getDescription());
             doner.dishUp(doner.getDescription());
-            System.out.println(doner.getDescription() + "cost is --> "+ doner.cost());
+            System.out.println(doner.getDescription() + " cost is --> "+ doner.cost()+"\n\n");
             totalCost += doner.cost();
         }
 
@@ -98,8 +99,8 @@ public class Cook {
             meatball.prepareDough(meatball.getDescription());
             meatball.cookDough(meatball.getDescription());
             meatball.dishUp(meatball.getDescription());
-            System.out.println(meatball.getDescription() + "cost is --> "+ meatball.cost());
-            totalCost = meatball.cost();
+            System.out.println(meatball.getDescription() + " cost is --> "+ meatball.cost()+"\n\n");
+            totalCost += meatball.cost();
         }
 
         for (KidMenu kidmenu:kidMenuList
@@ -107,7 +108,7 @@ public class Cook {
             kidmenu.prepareDough(kidmenu.getDescription());
             kidmenu.cookDough(kidmenu.getDescription());
             kidmenu.dishUp(kidmenu.getDescription());
-            System.out.println(kidmenu.getDescription() + "cost is --> "+ kidmenu.cost());
+            System.out.println(kidmenu.getDescription() + "cost is --> "+ kidmenu.cost()+"\n\n");
             totalCost += kidmenu.cost();
         }
 

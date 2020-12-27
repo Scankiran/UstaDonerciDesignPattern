@@ -28,7 +28,5 @@ public abstract class HotBeverage implements Beverage{
 
     public abstract void addCondiment();
 
-    boolean customerWantsCondiment(){
-        return true;
-    }
+    public abstract boolean customerWantsCondiment();
 }

@@ -1,6 +1,4 @@
-import Beverage.ColdBeverage;
 import Commands.*;
-import Meatball.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -40,9 +38,11 @@ public class Client {
                 case 4:
                     selectBeverageType(scanner);
                     break;
-                default:
+                case 0:
                     whileLoopKey = false;
                     break;
+                default:
+                    System.out.println("Not defined selection.");
             }
         }
 
@@ -125,7 +125,7 @@ public class Client {
             System.out.println("1 --> Meat");
             System.out.println("2 --> Chicken");
             System.out.println("3 --> Meatball");
-            System.out.println(("0 --> I dont want to Doner. Back."));
+            System.out.println(("0 --> I dont want to KidMenu. Back."));
 
             int selection = scanner.nextInt();
             switch (selection) {
@@ -160,7 +160,7 @@ public class Client {
 
             switch (beverageType) {
                 case 1:
-                    selectHoldBeverage(scanner);
+                    selectHotBeverage(scanner);
                     break;
 
                 case 2:
@@ -181,7 +181,7 @@ public class Client {
         System.out.println("3 --> Hamburger");
         System.out.println("4 --> Sandwich");
         System.out.println("5 --> Kilogram");
-        System.out.println("0 --> I have finished ordering. Prepare please.");
+        System.out.println("0 --> I don't want to Doner. Back.");
 
         int size = scanner.nextInt();
         switch (size){
@@ -462,7 +462,7 @@ public class Client {
         System.out.println("3 --> Fanta");
         System.out.println("4 --> FuseTea");
         System.out.println("5 --> lemonade");
-        System.out.println("6 --> Lprite");
+        System.out.println("6 --> Sprite");
         System.out.println("7 --> Water");
         System.out.println("8 --> Orange Juice");
         System.out.println("0 --> I don't want to beverage. Back.");
@@ -508,16 +508,17 @@ public class Client {
         }
     }
 
-    private static void selectHoldBeverage(Scanner scanner) {
+    private static void selectHotBeverage(Scanner scanner) {
         System.out.println("What do you want to drink?");
         System.out.println("1 --> Black Coffee");
         System.out.println("2 --> Cappuccino");
-        System.out.println("3 --> Espresso");
-        System.out.println("4 --> Hot Chocolate");
-        System.out.println("5 --> Latte");
-        System.out.println("6 --> Mocha");
+        System.out.println("3 --> Hot Chocolate");
+        System.out.println("4 --> Latte");
+        System.out.println("5 --> Mocha");
+        System.out.println("6 --> Espresso");
         System.out.println("7 --> Oralet");
         System.out.println("8 --> Tea");
+        System.out.println("9 --> Nescafe");
         System.out.println("0 --> I don't want to beverage. Back.");
 
         int hotSelection = scanner.nextInt();
@@ -544,8 +545,8 @@ public class Client {
                 waitress.takeOrder(mochaOrder);
                 break;
             case 6:
-                HotBeverageOrder nescafeOrder = new HotBeverageOrder(cook, "nescafe");
-                waitress.takeOrder(nescafeOrder);
+                HotBeverageOrder espressoOrder = new HotBeverageOrder(cook, "espresso");
+                waitress.takeOrder(espressoOrder);
                 break;
             case 7:
                 HotBeverageOrder oraletOrder = new HotBeverageOrder(cook, "oralet");
@@ -554,6 +555,10 @@ public class Client {
             case 8:
                 HotBeverageOrder teaOrder = new HotBeverageOrder(cook, "tea");
                 waitress.takeOrder(teaOrder);
+                break;
+            case 9:
+                HotBeverageOrder nescafeOrder = new HotBeverageOrder(cook, "nescafe");
+                waitress.takeOrder(nescafeOrder);
                 break;
 
             default:
