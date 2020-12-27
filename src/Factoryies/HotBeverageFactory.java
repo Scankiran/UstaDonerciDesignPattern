@@ -3,7 +3,8 @@ package Factoryies;
 import Beverage.Beverage;
 import Beverage.HotBeverages.*;
 
-public class HotBeverageFactory {
+public class HotBeverageFactory implements BeverageFactory{
+    @Override
     public Beverage makeBeverage(String beverageType) {
         switch (beverageType){
             case "black":

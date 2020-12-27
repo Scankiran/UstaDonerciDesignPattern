@@ -3,9 +3,11 @@ package Factoryies;
 import Beverage.Beverage;
 import Beverage.ColdBeverages.*;
 
-public class ColdBeverageFactory {
+public class ColdBeverageFactory implements BeverageFactory {
+
+    @Override
     public Beverage makeBeverage(String beverageType) {
-        switch (beverageType){
+        switch (beverageType) {
             case "ayran":
                 return new Ayran();
             case "cola":

@@ -53,7 +53,6 @@ public class Cook {
                 DonerFactory donerFactory = new DonerFactory();
                 Doner orderedDoner = donerFactory.makeDoner(donerType);
                 orderedDoner = decorate(orderedDoner,donerSize);
-                //TODO: Doner type'a bakılacak. 'Debugging'
                 donerList.add(orderedDoner);
                 break;
 
@@ -62,7 +61,6 @@ public class Cook {
                 MeetballFactory meatballFactory = new MeetballFactory();
                 Meatball orderedMeatball = meatballFactory.makeMeatBall(meatballType);
                 orderedMeatball = decorate(orderedMeatball,meatBallSaladList,meatBallAppzetierList,meatBallFriesList,meatballSauceList);
-                //TODO: meeBall decore edilecek.
                 meatBallList.add(orderedMeatball);
                 break;
 
@@ -71,17 +69,10 @@ public class Cook {
                 KidmenuFactory kidFactory = new KidmenuFactory();
                 KidMenu orderedKidMenu = kidFactory.makeKidMenu(kidmenuType);
                 orderedKidMenu = decorate(orderedKidMenu,kidMenuToyList,kidMenuSauceList);
-                //TODO: kidMenu decore edilecek.
                 kidMenuList.add(orderedKidMenu);
                 break;
 
         }
-
-
-        //TODO: En son beverageleri prepare edip description ve costunu bastıracaksın.
-        //TODO: En son donerleri prepare edip description ve costunu bastıracaksın.
-        //TODO: En son köfteleri prepare edip description ve costunu bastıracaksın.
-        //TODO: En son çocuk menülerini prepare edip description ve costunu bastıracaksın.
 
     }
 

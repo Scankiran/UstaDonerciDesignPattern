@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Client {
     static Cook cook;
     static Waitress waitress;
+
     public static void main(String[] args) {
         cook = new Cook();
         waitress = new Waitress();
@@ -48,7 +49,6 @@ public class Client {
         cook.cookOrder();
 
     }
-
 
     private static void selectDonerType(Scanner scanner){
         boolean whileLoopKey = true;
